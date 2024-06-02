@@ -22,4 +22,9 @@ public class DoctorService {
         //  1 1st check patient is valid
         return dose;
     }
+
+    public String deleteDoctor(int id) {
+        doctorRepository.deleteById(id);
+        return "doctor has been deleted";
+    }
 }
