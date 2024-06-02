@@ -3,6 +3,8 @@ package com.example.VacciNation.model;
 import com.example.VacciNation.Enum.VaccineBrand;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +25,11 @@ public class Dose {
 
     private VaccineBrand vaccineBrand;
 
-    private boolean taken;
 
     @CreationTimestamp
     private Date dateOfVaccine;
+
+    @OneToOne
+    @JoinColumn
+    Patient patient;
 }

@@ -1,8 +1,7 @@
 package com.example.VacciNation.model;
 
 import com.example.VacciNation.Enum.AppointmentStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +22,12 @@ public class Appointment {
     private Date dateOfAppointment;
 
     private AppointmentStatus status;
+
+    @ManyToOne
+    @JoinColumn
+    Doctor doctor;
+
+    @OneToOne
+    @JoinColumn
+    Patient patient;
 }
