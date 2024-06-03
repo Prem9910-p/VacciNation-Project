@@ -1,10 +1,7 @@
 package com.example.VacciNation.model;
 
 import com.example.VacciNation.Enum.VaccineBrand;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +16,12 @@ import java.util.Date;
 @Entity
 public class Dose {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String SerialNumber;
 
+    @Enumerated(value = EnumType.STRING)
     private VaccineBrand vaccineBrand;
 
 
