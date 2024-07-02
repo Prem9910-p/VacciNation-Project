@@ -1,11 +1,13 @@
 package com.example.VacciNation.service;
 
+import com.example.VacciNation.Enum.Gender;
 import com.example.VacciNation.exception.PatientNotFoundException;
 import com.example.VacciNation.model.Patient;
 import com.example.VacciNation.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,4 +28,15 @@ public class PatientService {
         Patient patient= patientOptional.get();
         return patient;
     }
+
+    public List<Patient> getAllByGender(Gender gender) {
+           List<Patient> patients=patientRepository.getAllByGender(gender);
+           return patients;
+    }
+
+
+//    public List<Patient> getAllVaccinatedPatients(Boolean vaccinated) {
+//        return patientRepository.getAllVaccinatedPatients(vaccinated);
+////        return  VaccinatedPatient;
+//    }
 }
