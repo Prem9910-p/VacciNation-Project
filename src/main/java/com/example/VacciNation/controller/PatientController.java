@@ -1,6 +1,8 @@
 package com.example.VacciNation.controller;
 
 import com.example.VacciNation.Enum.Gender;
+import com.example.VacciNation.dto.request.PatientRequest;
+import com.example.VacciNation.dto.response.PatientResponse;
 import com.example.VacciNation.model.Patient;
 import com.example.VacciNation.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +20,26 @@ public class PatientController {
     PatientService patientService;
 
     @PostMapping("/add")
-    public ResponseEntity addPatient(@RequestBody Patient patient) {
+    public ResponseEntity addPatient(@RequestBody PatientRequest patientRequest) {
         try {
-            patientService.addPatient(patient);
-            return new ResponseEntity("patient has been added", HttpStatus.CREATED);
+           PatientResponse patientResponse= patientService.addPatient(patientRequest);
+            return new ResponseEntity(patientResponse, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity(e.getMessage(),HttpStatus.NOT_ACCEPTABLE);
         }
     }
         @GetMapping("/get")
-         public Patient getPatient(@RequestParam("id") int id){
-            return patientService.getPatient(id);
+         public PatientResponse getPatient(@RequestParam("id") int id){
+
+             PatientResponse patientResponse=patientService.getPatient(id);
+             return patientResponse;
         }
 
 
         @GetMapping("/get/{gender}")
-        public List<Patient> getAllByGender(@PathVariable("gender") Gender gender){
+        public List<PatientResponse> getAllByGender(@PathVariable("gender") Gender gender){
         return patientService.getAllByGender(gender);
+
         }
 
 //        @GetMapping("/get/{vaccinated}")
