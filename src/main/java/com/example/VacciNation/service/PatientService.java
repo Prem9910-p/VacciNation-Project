@@ -25,6 +25,7 @@ public class PatientService {
         patient.setName(patientRequest.getName());
         patient.setGender(patientRequest.getGender());
         patient.setEmailId(patientRequest.getEmailId());
+        patient.setAge(patientRequest.getAge());
         patientRepository.save(patient);
 
 
@@ -32,6 +33,7 @@ public class PatientService {
         patientResponse.setName(patient.getName());
         patientResponse.setVaccinated(patient.isVaccinated());
         patientResponse.setEmailId(patientRequest.getEmailId());
+        patientResponse.setAge(patientRequest.getAge());
         return patientResponse;
     }
 
@@ -46,6 +48,7 @@ public class PatientService {
         patientResponse.setName(patient.getName());
         patientResponse.setVaccinated(patient.isVaccinated());
         patientResponse.setEmailId(patient.getEmailId());
+        patientResponse.setAge(patient.getAge());
         return patientResponse;
 
     }
@@ -59,14 +62,16 @@ public class PatientService {
                 patientResponse.setVaccinated(patient.isVaccinated());
                 patientResponse.setName(patient.getName());
                 patientResponse.setEmailId(patient.getEmailId());
+                patientResponse.setAge(patient.getAge());
                 patientResponses.add(patientResponse);
+
             }
             return patientResponses;
     }
 
 
-//    public List<Patient> getAllVaccinatedPatients(Boolean vaccinated) {
-//        return patientRepository.getAllVaccinatedPatients(vaccinated);
-//
-//    }
+    public List<Patient> getAllVaccinatedPatients(Boolean vaccinated) {
+        return patientRepository.findByVaccinated(vaccinated);
+
+    }
 }

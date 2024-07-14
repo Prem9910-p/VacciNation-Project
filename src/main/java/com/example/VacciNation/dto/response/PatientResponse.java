@@ -13,6 +13,8 @@ import lombok.Setter;
 public class PatientResponse {
     private String name;
 
+    private int age;
+
     private boolean vaccinated;
 
     private String emailId;

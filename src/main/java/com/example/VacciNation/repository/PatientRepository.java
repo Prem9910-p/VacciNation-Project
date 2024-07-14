@@ -13,5 +13,5 @@ public interface PatientRepository extends JpaRepository<Patient,Integer> {
     List<Patient> getAllByGender(Gender gender);
 
 
-//    List<Patient> getAllVaccinatedPatients(Boolean vaccinated);
+    List<Patient> findByVaccinated(Boolean vaccinated);
 }

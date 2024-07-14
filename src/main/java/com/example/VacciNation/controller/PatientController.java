@@ -42,13 +42,13 @@ public class PatientController {
 
         }
 
-//        @GetMapping("/get/{vaccinated}")
-//        public List<Patient> getAllVaccinatedPatients(@RequestParam(required = false) Boolean vaccinated){
-//        if(vaccinated!=null) {
-//            return patientService.getAllVaccinatedPatients(vaccinated);
-//        }else {
-//            return patientService.getAllVaccinatedPatients(null);
-//        }
-//        }
+        @GetMapping("/get/{vaccinated}")
+        public List<Patient> getAllVaccinatedPatients(@RequestParam(required = false) Boolean vaccinated){
+        if(vaccinated!=null) {
+            return patientService.getAllVaccinatedPatients(vaccinated);
+        }else {
+            return patientService.getAllVaccinatedPatients(null);
+        }
+        }
 
 }
